@@ -1,0 +1,280 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <link rel="icon" href="https://i.imgur.com/7qgkDqe.jpg" type="image/x-icon">
+
+    <title>
+        هُدى
+    </title>
+
+
+
+    <link rel="stylesheet" href={%static "/cssBoot/bootstrap.min.css" %} type="text/css">
+
+
+    <link rel="stylesheet" href={%static "/css/home_page.css" %} type="text/css">
+
+
+    <link rel="stylesheet" href={%static "/css/fonts/fonts.css"%} type="text/css">
+
+
+    <link rel="stylesheet" href={%static '/css/header.css' %} type="text/css">
+
+    <link rel="stylesheet" href={%static "/css/footer.css"%} type="text/css">
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <!-- MDB icon -->
+
+<link rel="icon" href={%static "huda\static\imgmdb\mdb-favicon.ico" %}type="image/x-icon" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+    <!-- MDB -->
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+        integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+        crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Almarai&display=swap" rel="stylesheet">
+    <style>
+        font-family: 'Almarai', sans-serif;
+    </style>
+
+</head>
+
+
+
+<body>
+    <header>
+
+        <nav class="navbar navbar-expand-lg  py-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img id="logo" src="https://i.imgur.com/QQbpWtd.png" alt="logo">
+                </a>
+                <button class="navbar-toggler collapsed" style="color:transparent; border:none;" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                   <ul class="navbar-nav mr-lg-auto pr-0 text-center">
+
+                        <li>
+                            <a href="{% url 'home' %}" >الصفحة الرئيسة</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'takePart' %}">حجز فقرة</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'shows'%}">العروض</a>
+
+                        </li>
+                        <li>
+                            <a href="{% url 'contactUs' %}" class="activee">
+                                اتصل بنا
+                            </a>
+                        </li>
+                         {% if user.is_authenticated %}
+                        <li>
+                            <div class="dropdown ">
+                                <a class="activee" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{user.username}}
+                            </a>
+                            <ul class="dropdown-menu mt-3" aria-labelledby="dropdownMenuLink">
+
+                                {% if user.is_staff %}
+
+                                <li><a class="dropdown-item" href="{% url 'admin:index'%} ">  لوحة التحكم </a></li>
+                                {% endif %}
+
+
+                                <li><a class="dropdown-item" href="{% url 'profile'%} "> الملف الشخصي</a></li>
+
+                                <li><a class="dropdown-item" href="{% url 'logout'%} ">تسجيل الخروج</a></li>
+
+                            </ul>
+                        </div>
+                        </li>
+                        {% else %}
+                        <li>
+
+
+
+                            <a href="{% url 'signin'%}" >
+                                تسجيل الدخول
+                            </a>
+
+                        </li>
+
+                        <li>
+
+                            <a href="{% url 'signup'%}">
+
+
+
+                                تسجيل
+
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+    </header>
+
+    <center>
+        <div class="container p-2">
+            <div class="row justify-content-center mx-2">
+
+                <div class="col-lg-4 col-md-8 col-sm-12  p-0 mt-5 ">
+                    {% comment %} <form action="">
+                        <div class="mb-3">
+
+                            <label for="desc" class="form-label "> نص الرسالة</label>
+                            <textarea class="form-control p-2 w-100" id="desc" rows="3"></textarea>
+                        </div>
+
+                        <button class="btn button"> إرسال</button>
+                    </form> {% endcomment %}
+
+                    {% if user.is_authenticated %}
+                    <form method='POST' enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label for="desc" class="form-label">نص الرسالة</label>
+                            <!-- <textarea class="form-control p-2" id="desc" rows="4" required
+                                style="width: 300px;"></textarea> -->
+
+                            <div style=" width: 400px; ">
+                                {{ form.message }}
+                            </div>
+                        </div>
+
+                        <input class=" d-none " id="user" type="text" name="user" maxlength="100"
+                        value="{{ user.username }}">
+
+                        <input class=" d-none " id="email" type="text" name="email" maxlength="100"
+                        value="{{ user.email }}">
+
+
+
+
+
+                        <button class="btn button" type="submit"> إرسال</button>
+                    </form>
+                    {% else %}
+
+                    <p>
+                        يجب أن تسجل دخولك أولا حتى تتمكن من إرسال رسالة مباشرة إلى الإدارة.
+
+                    </p>
+
+                    {% endif %}
+
+                </div>
+
+                <div class="col-lg-4 col-md-8 col-sm-12  p-3 m-5 ">
+                    <h3>كن دائمًا على تواصل معنا </h3>
+                    <div class="container p-4 Social">
+                        <!-- Facebook -->
+                        <a class="btn  btn-floating m-1 Facebook" href="https://www.facebook.com/huda.teamm"
+                            target="_blank" role="button"><i class="fab fa-facebook-f "></i></a>
+
+                        <!-- Google -->
+                        <a class="btn btn-floating m-1 Google"
+                            href="https://www.youtube.com/channel/UCvyY5YBLRBxbC_Alm1KXW1g" target="_blank"
+                            role="button"><i class="fab fa-youtube "></i></a>
+
+                        <!-- Instagram -->
+                        <a class="btn btn-floating m-1 Instagram" href="https://www.instagram.com/huda.team/"
+                            target="_blank" role="button"><i class="fab fa-instagram"></i></a>
+
+                        <!-- Linkedin -->
+                        <a class="btn btn-floating m-1 Linkedin" href="https://www.linkedin.com/company/hudateam/"
+                            target="_blank" role="button"><i class="fab fa-linkedin-in"></i></a>
+
+                    </div>
+                </div>
+            </div>
+    </center>
+
+
+    <!-- Footer -->
+    <footer class=" footer text-center text-white position-sticky d-block w-100 bottom-0 top-100"
+        style="background-color:#200016;">
+        <!-- Grid container -->
+        <div class="container p-4 mt-5">
+
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn  btn-floating m-1 Facebook" href="https://www.facebook.com/huda.teamm" target="_blank"
+                    role="button"><i class="fab fa-facebook-f "></i></a>
+
+                <!-- Google -->
+                <a class="btn   btn-floating m-1 Google" href="https://www.youtube.com/channel/UCvyY5YBLRBxbC_Alm1KXW1g"
+                    target="_blank" role="button"><i class="fab fa-youtube "></i></a>
+
+                <!-- Instagram -->
+                <a class="btn   btn-floating m-1 Instagram" href="https://www.instagram.com/huda.team/" target="_blank"
+                    role="button"><i class="fab fa-instagram"></i></a>
+
+                <!-- Linkedin -->
+                <a class="btn   btn-floating m-1 Linkedin" href="https://www.linkedin.com/company/hudateam/"
+                    target="_blank" role="button"><i class="fab fa-linkedin-in"></i></a>
+
+            </section>
+            <!-- Section: Social media -->
+
+
+
+            <!-- Section: Text -->
+            <section class="m-0 p-0">
+                <p>
+                    إن من البيان لسحرًا
+                </p>
+            </section>
+            <!-- Section: Text -->
+
+
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+            جميع الحقوق محفوظة ©
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+
+
+</body>
+
+
+</html>
