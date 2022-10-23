@@ -1,0 +1,133 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Almarai";
+}
+
+body {
+    /* background: linear-gradient(#200016, #10001f); */
+    height: 100vh;
+    color: #850d5f;
+    font-size: 20px;
+    background-color: #edfaff;
+    background-position: 100% 10%, center left, bottom right;
+    background-size: 50%, auto, auto;
+}
+
+
+#logo {
+    width: 100px;
+    margin-right: 20px;
+    vertical-align: middle;
+    border-style: none;
+
+}
+
+
+
+.navbar {
+    background-color: #f1e9f198;
+    box-shadow: 0px 3px 16px #0c0e0e29;
+    position: sticky !important;
+    width: 100% !important;
+    z-index: 1001;
+    display: hide;
+
+}
+
+
+
+@media (min-width: 992px) {
+    .navbar-expand-lg .navbar-collapse {
+        display: flex !important;
+        flex-basis: auto;
+        justify-content: center;
+
+    }
+}
+
+
+
+
+a {
+    color: #5d4d4d;
+    text-decoration: none;
+}
+
+.button {
+    background-color: #A3195B;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    outline: none;
+    border-style: none;
+    font-size: 20px;
+}
+
+
+.button:hover {
+    background-color: #edfaff;
+    color: #A3195B;
+    border: #6A2773 2px;
+    border-radius: 8px;
+    border-style: solid;
+}
+
+
+
+header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    z-index: 1001;
+}
+
+header ul li {
+    padding: 12px;
+    z-index: 1001;
+}
+
+header ul li a {
+    padding: 6px 15px;
+    border-radius: 20px;
+    color: #6A2773;
+    z-index: 1001;
+}
+
+header ul li a:hover,
+.activee {
+    background-color: #6A2773;
+    color: #ffffff;
+}
+
+
+
+/* width */
+::-webkit-scrollbar {
+    border-radius: 120px;
+    width:15px;
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 120px;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 120px;
+
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+
+}

@@ -1,0 +1,8 @@
+.glassEf {
+    background: rgba(196, 223, 235, 0.27);
+    border-radius: 16px;
+    box-shadow: 50px 40px 50px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(196, 223, 235, 1);
+}

@@ -1,0 +1,10 @@
+.declear {
+    height: 350px;
+    margin-top: 0px;
+    padding-top: 0px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 0;
+}
+

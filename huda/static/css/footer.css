@@ -1,0 +1,39 @@
+.footer a {
+    background-color: transparent;
+    color: #ffffff;
+    border-style: none;
+
+}
+
+.Social a {
+    color: #040404;
+    background-color: transparent;
+    border-style: none;
+}
+
+
+.Facebook:hover {
+    background-color: #3b5998;
+    color: #ffffff;
+    border-style: none;
+}
+
+
+.Google:hover {
+    background-color: #dd4b39;
+    color: #ffffff;
+    border-style: none;
+}
+
+.Instagram:hover {
+    background-color: #ac2bac;
+    color: #ffffff;
+    border-style: none;
+}
+
+
+.Linkedin:hover {
+    background-color: #0082ca;
+    color: #ffffff;
+    border-style: none;
+}
